@@ -1,0 +1,29 @@
+{
+  "name": "clean-shop-archi",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start:core": "cd ./src/core/ && npm install",
+    "start:vue": "cd ./src/vue/ && npm install",
+    "start": "npm install && npm run start:core & npm run start:vue",
+    "dev:core": "cd ./src/core/ && npm run dev",
+    "dev:vue": "cd ./src/vue/ && npm run dev",
+    "dev": "npm run dev:core & npm run dev:vue",
+    "build:core:install": "cd ./src/core/ && npm install",
+    "build:vue:install": "cd ./src/vue/ && npm install",
+    "build:copy-core": "cp -R ./src/core/dist/* ./src/vue/dist/spa/js",
+    "build:core": "cd ./src/core/ && npm run build",
+    "build:vue": "cd ./src/vue/ && npm run build",
+    "build": "npm run build:core:install && npm run build:vue:install && npm run build:core  && npm run build:vue && npm run build:copy-core",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
