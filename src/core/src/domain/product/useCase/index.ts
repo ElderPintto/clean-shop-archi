@@ -1,10 +1,16 @@
 import ProductRepository from "../repository";
 
-export default class ProductService extends ProductRepository {
+export default class ProductService {
+  private productRepository: ProductRepository;
+
+  constructor(productRepository: ProductRepository) {
+    this.productRepository = productRepository;
+  }
+
   async getAllProducts() {
-    return this.getAll();
+    return this.productRepository.getAll();
   }
   async getProductById(id: number) {
-    return this.getById(id);
+    return this.productRepository.getById(id);
   }
 }
