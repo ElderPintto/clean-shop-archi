@@ -12,27 +12,43 @@ class AxiosClient implements IApiClient {
     url: string,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.client.get(url, config);
+    try {
+      return this.client.get(url, config);
+    } catch (error) {
+      throw error;
+    }
   }
   async post<T>(
     url: string,
     data?: object,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.client.post(url, data, config);
+    try {
+      return this.client.post(url, data, config);
+    } catch (error) {
+      throw error;
+    }
   }
   async put<T>(
     url: string,
     data?: object,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.client.put(url, data, config);
+    try {
+      return this.client.post(url, data, config);
+    } catch (error) {
+      throw error;
+    }
   }
   async delete<T>(
     url: string,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.client.put(url, config);
+    try {
+      return this.client.post(url, config);
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
