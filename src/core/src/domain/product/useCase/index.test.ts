@@ -1,9 +1,13 @@
+import BaseApiClient from "../../../infra/clients/baseApiClient";
+import ProductRepository from "../repository";
 import ProductService from "./index";
 import { describe, it, assert, expect } from "vitest";
 
-let productService = new ProductService({
+const baseApiClient = new BaseApiClient({
   baseURL: "https://fakestoreapi.com/",
 });
+const productRepository = new ProductRepository(baseApiClient);
+const productService = new ProductService(productRepository);
 
 describe("suite", () => {
   it("get all product", async () => {
