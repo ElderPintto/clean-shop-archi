@@ -16,6 +16,7 @@ export interface product {
   category: string;
   description: string;
   image: string;
+  quantityInCart?: number;
 }
 export interface Meta {
   totalCount: number;

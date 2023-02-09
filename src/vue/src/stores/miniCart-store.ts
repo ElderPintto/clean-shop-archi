@@ -16,6 +16,11 @@ export const useMiniCartStore = defineStore('miniCart', {
   }),
   getters: {
     count: (state) => state.itemsCart.length,
+    valueTotal: (state) =>
+      state.itemsCart.reduce(
+        (acc, item) => acc + item.price * (item.quantityInCart || 1),
+        0
+      ),
   },
   actions: {
     addItem(item: product): void {

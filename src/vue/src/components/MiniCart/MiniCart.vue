@@ -39,13 +39,21 @@
           </p>
         </q-item-section>
       </q-item>
-      <q-item-label header>
-        <div>Valor Total</div>
-        <div>{{ valueTotal }}</div>
+      <q-separator />
+      <q-item-label header class="flex justify-between">
+        <div>
+          <strong class="text-primary">Valor Total</strong>
+        </div>
+        <div>{{ formatter.format(valueTotal) }}</div>
       </q-item-label>
       <q-separator />
       <q-item-label header>
-        <q-btn color="primary" class="full-width" flat label="checkout" />
+        <q-btn
+          color="primary"
+          class="full-width"
+          flat
+          label="vá para o carrinho"
+        />
       </q-item-label>
     </q-list>
   </div>
@@ -57,14 +65,14 @@
 
 <script setup lang="ts">
 import { useMiniCartStore } from 'stores/miniCart-store';
-import { computed } from 'vue';
+import { storeToRefs } from 'pinia';
 
 const storeMiniCart = useMiniCartStore();
+const { valueTotal, count, itemsCart } = storeToRefs(storeMiniCart);
+const { removeItem } = storeMiniCart;
 
-const count = computed(() => storeMiniCart.count);
-const itemsCart = computed(() => storeMiniCart.itemsCart);
-
-const { removeItem, valueTotal } = storeMiniCart;
+const formatter = new Intl.NumberFormat('pt-BR', {
+  style: 'currency',
+  currency: 'BRL',
+});
 </script>
-
-<style lang="scss" scoped></style>
