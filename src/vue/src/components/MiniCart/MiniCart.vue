@@ -25,6 +25,9 @@
             <span class="text-body2 flex content-center">
               R$ {{ item.price }}
             </span>
+            <span class="text-body2 flex content-center">
+              qnt : {{ item.quantityInCart }}
+            </span>
             <q-btn
               dense
               flat
@@ -36,6 +39,10 @@
           </p>
         </q-item-section>
       </q-item>
+      <q-item-label header>
+        <div>Valor Total</div>
+        <div>{{ valueTotal }}</div>
+      </q-item-label>
       <q-separator />
       <q-item-label header>
         <q-btn color="primary" class="full-width" flat label="checkout" />
@@ -57,7 +64,7 @@ const storeMiniCart = useMiniCartStore();
 const count = computed(() => storeMiniCart.count);
 const itemsCart = computed(() => storeMiniCart.itemsCart);
 
-const { removeItem } = storeMiniCart;
+const { removeItem, valueTotal } = storeMiniCart;
 </script>
 
 <style lang="scss" scoped></style>

@@ -16,7 +16,6 @@ export interface product {
   category: string;
   description: string;
   image: string;
-  rating: rating;
 }
 export interface Meta {
   totalCount: number;
